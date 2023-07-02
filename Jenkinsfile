@@ -9,7 +9,7 @@ stage('git clone') {
 steps {
 
 echo "Cloning the code"
-git branch: 'main', url: 'https://github.com/BecomeDevops/gittest.git'
+#git branch: 'main', url: 'https://github.com/BecomeDevops/gittest.git'
 
 }
 
