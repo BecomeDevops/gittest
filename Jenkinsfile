@@ -1,45 +1,49 @@
-pipeline{
+pipeline {
 
-agent any 
+  agent any 
 
-stages{
-
+  stages {
 
 stage('git clone') {
+
 steps {
 
-echo "Cloning the code"
-
-
+echo "cloning the repository code"
+  
 }
 
 
-}
+  }
 
-stage('Build') {
+
+    stage('Build') {
+
 steps {
 
-echo "Building the code"
-
+echo "build the code using maven tool"
+  
 }
 
 
-}
-stage('Deploy') {
+  }
+
+    stage('push to artifactory') {
+
 steps {
 
-echo "Deploying  the code"
-
+echo "push the artificat to nexus"
+  
 }
 
 
-}
-
-}
+  }
 
 
 
 
+
+    
+  }
 
 
 
