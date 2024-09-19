@@ -1,0 +1,9 @@
+
+      - name: Deploy Docker image on EC2 using SSM
+        run: |
+         aws ssm send-command \
+           --document-name "AWS-RunShellScript" \
+           --targets '[{"Key":"instanceIds","Values":["i-032d1b4082fd6d385"]}]' \
+           --parameters '{"commands":["aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com", "docker pull 590183819216.dkr.ecr.us-east-1.amazonaws.com/7acres:2024.09.18.22.33.21", "docker run -idt --name fastapi-app -p 8000:80 590183819216.dkr.ecr.us-east-1.amazonaws.com/7acres:2024.09.18.22.33.21"]}' \
+           --comment "Deploy FastAPI app from ECR to EC2 Server" \
+           --output text
